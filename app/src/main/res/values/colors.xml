@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F7AD50</color>
+    <color name="colorPrimaryDark">@color/colorSpinKit</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorSpinKit">#1E88E5</color>
+</resources>

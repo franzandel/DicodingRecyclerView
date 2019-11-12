@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Dicoding RecyclerView</string>
+    <string name="bottomnav_title_news">News</string>
+    <string name="bottomnav_title_article">Article</string>
+    <string name="bottomnav_title_about">About</string>
+    <string name="full_source">Full Source :</string>
+    <string name="publish_date">Publish Date : </string>
+    <string name="written_by">Written By : </string>
+</resources>
