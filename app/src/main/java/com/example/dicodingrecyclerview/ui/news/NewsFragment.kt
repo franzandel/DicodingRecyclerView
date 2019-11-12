@@ -22,10 +22,6 @@ class NewsFragment : Fragment() {
     private lateinit var rvNews: RecyclerView
     private lateinit var spinKitProgress: SpinKitView
 
-    companion object {
-        const val ARTICLE_KEY = "article_key"
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -74,11 +70,8 @@ class NewsFragment : Fragment() {
         newsAdapter.setOnItemClickListener { item, _ ->
             val newsRow = item as NewsRow
 
-            val bundle = Bundle().apply {
-                putParcelable(ARTICLE_KEY, newsRow.article)
-            }
-
-            findNavController().navigate(R.id.navigation_article, bundle)
+            findNavController().navigate(
+                NewsFragmentDirections.actionNavigationNewsToNavigationArticle(newsRow.article))
         }
     }
 }

@@ -1,19 +1,17 @@
 package com.example.dicodingrecyclerview.ui.article
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-
 import com.example.dicodingrecyclerview.R
-import com.example.dicodingrecyclerview.data.entities.Article
-import com.example.dicodingrecyclerview.ui.news.NewsFragment.Companion.ARTICLE_KEY
 
 class ArticleFragment : Fragment() {
 
@@ -52,8 +50,9 @@ class ArticleFragment : Fragment() {
     }
 
     private fun initializeVM() {
-        val article = arguments?.getParcelable<Article>(ARTICLE_KEY)
-        val viewModelFactory = ArticleViewModelFactory(article!!)
+        val safeArgs: ArticleFragmentArgs by navArgs()
+        val article = safeArgs.specificArticle
+        val viewModelFactory = ArticleViewModelFactory(article)
         articleViewModel = ViewModelProviders.of(this, viewModelFactory)
             .get(ArticleViewModel::class.java)
     }
