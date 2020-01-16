@@ -4,24 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.dicodingrecyclerview.R
+import kotlinx.android.synthetic.main.fragment_article.*
 
 class ArticleFragment : Fragment() {
 
-    private lateinit var ivNews: ImageView
-    private lateinit var tvTitle: TextView
-    private lateinit var tvSource: TextView
-    private lateinit var tvAuthor: TextView
-    private lateinit var tvPublishedDate: TextView
-    private lateinit var tvContent: TextView
-    private lateinit var tvURL: TextView
     private lateinit var articleViewModel: ArticleViewModel
 
     override fun onCreateView(
@@ -34,19 +26,8 @@ class ArticleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupViewId(view)
         initializeVM()
         setupUI()
-    }
-
-    private fun setupViewId(view: View) {
-        ivNews = view.findViewById(R.id.ivNews)
-        tvTitle = view.findViewById(R.id.tvTitle)
-        tvSource = view.findViewById(R.id.tvSource)
-        tvAuthor = view.findViewById(R.id.tvAuthor)
-        tvPublishedDate = view.findViewById(R.id.tvPublishedDate)
-        tvContent = view.findViewById(R.id.tvContent)
-        tvURL = view.findViewById(R.id.tvURL)
     }
 
     private fun initializeVM() {

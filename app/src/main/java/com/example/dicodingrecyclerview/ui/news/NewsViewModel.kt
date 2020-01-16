@@ -9,9 +9,9 @@ class NewsViewModel : ViewModel() {
 
     private val appRepository = AppRepository()
 
-    fun getListNewsRow(): LiveData<List<NewsRow>> {
-        val mutableLiveData = MutableLiveData<List<NewsRow>>()
+    private val mutableLiveData = MutableLiveData<List<NewsRow>>()
 
+    fun setListNewsRow() {
         appRepository.getAllNews().observeForever { news ->
             val articlesCopy = news.articles.map { article ->
                 NewsRow(article)
@@ -21,9 +21,11 @@ class NewsViewModel : ViewModel() {
                 newsRow.article.source?.name
             }
 
-            mutableLiveData.value = distinctArticles
+            mutableLiveData.postValue(distinctArticles)
         }
+    }
 
+    fun getListNewsRow(): LiveData<List<NewsRow>> {
         return mutableLiveData
     }
 }
