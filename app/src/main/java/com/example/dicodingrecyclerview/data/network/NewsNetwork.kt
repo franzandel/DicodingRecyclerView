@@ -1,7 +1,8 @@
 package com.example.dicodingrecyclerview.data.network
 
-import com.example.dicodingrecyclerview.external.AppConst.baseUrl
 import com.example.dicodingrecyclerview.data.entities.News
+import com.example.dicodingrecyclerview.external.AppConst
+import com.example.dicodingrecyclerview.external.AppConst.baseUrl
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,8 +17,12 @@ import retrofit2.http.Query
 class NewsNetwork {
 
     interface NewsNetworkService {
-        @GET("/v2/top-headlines?country=us&category=business")
-        fun getAllNews(@Query("apiKey") apiKey: String): Call<News>
+        @GET("/v2/top-headlines")
+        fun getAllNews(
+            @Query("apiKey") apiKey: String = AppConst.apiKey,
+            @Query("country") country: String = "us",
+            @Query("category") category: String = "business"
+        ): Call<News>
     }
 
     fun getNewsNetworkService(): NewsNetworkService {
