@@ -16,9 +16,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        val navView: BottomNavigationView = findViewById(R.id.bottomNav)
 
-        val navController = findNavController(R.id.nav_host_fragment)
+        val navController = findNavController(R.id.navHost)
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.fragment_news, R.id.fragment_about
@@ -29,6 +29,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return findNavController(R.id.nav_host_fragment).navigateUp(appBarConfiguration)
+        return findNavController(R.id.navHost).navigateUp(appBarConfiguration)
     }
 }
