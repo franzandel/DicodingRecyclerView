@@ -1,7 +1,6 @@
 package com.example.dicodingrecyclerview.data.repository
 
 import androidx.lifecycle.MutableLiveData
-import com.example.dicodingrecyclerview.external.AppConst
 import com.example.dicodingrecyclerview.data.entities.News
 import com.example.dicodingrecyclerview.data.network.NewsNetwork
 import retrofit2.Call
@@ -19,7 +18,7 @@ class AppRepository {
     fun getAllNews(): MutableLiveData<News> {
         val mutableLiveData = MutableLiveData<News>()
 
-        newsNetworkService.getAllNews(AppConst.apiKey)
+        newsNetworkService.getAllNews()
             .enqueue(object : Callback<News> {
                 override fun onResponse(call: Call<News>, response: Response<News>) {
                     val news = response.body()
