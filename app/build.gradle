@@ -25,8 +25,16 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
+            buildConfigField "String", "API_KEY_GITHUB", "\"f79d6965f8814037b1412eb6451944ba\""
+            buildConfigField "String", "BASE_URL_GITHUB", "\"https://newsapi.org/\""
+        }
+
+        release {
+            minifyEnabled true
+            buildConfigField "String", "API_KEY_GITHUB", "\"f79d6965f8814037b1412eb6451944ba\""
+            buildConfigField "String", "BASE_URL_GITHUB", "\"https://newsapi.org/\""
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

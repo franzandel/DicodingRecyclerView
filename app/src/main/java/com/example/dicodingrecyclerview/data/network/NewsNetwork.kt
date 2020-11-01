@@ -1,8 +1,7 @@
 package com.example.dicodingrecyclerview.data.network
 
+import com.example.dicodingrecyclerview.BuildConfig
 import com.example.dicodingrecyclerview.data.entities.News
-import com.example.dicodingrecyclerview.external.AppConst
-import com.example.dicodingrecyclerview.external.AppConst.baseUrl
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -19,7 +18,7 @@ class NewsNetwork {
     interface NewsNetworkService {
         @GET("/v2/top-headlines")
         fun getAllNews(
-            @Query("apiKey") apiKey: String = AppConst.apiKey,
+            @Query("apiKey") apiKey: String = BuildConfig.API_KEY_GITHUB,
             @Query("country") country: String = "us",
             @Query("category") category: String = "business"
         ): Call<News>
@@ -27,7 +26,7 @@ class NewsNetwork {
 
     fun getNewsNetworkService(): NewsNetworkService {
         val retrofit = Retrofit.Builder()
-            .baseUrl(baseUrl)
+            .baseUrl(BuildConfig.BASE_URL_GITHUB)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
